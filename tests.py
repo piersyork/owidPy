@@ -12,7 +12,7 @@ from owidPy import owid, owid_search
 import seaborn as sns
 
 
-import owidPy
+
 
 owidPy.owid_search('rights')
 

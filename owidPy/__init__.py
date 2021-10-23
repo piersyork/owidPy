@@ -5,4 +5,4 @@ Created on Sat Oct 23 14:43:26 2021
 
 @author: piers
 """
-from owidPy import owidPy
+from owidPy import owid, owid_search
