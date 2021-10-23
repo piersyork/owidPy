@@ -5,7 +5,6 @@ Created on Sat Oct 23 14:43:26 2021
 
 @author: piers
 """
-from owid_search import owid_search
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -78,4 +77,31 @@ class Owid:
     
     def view_chart(self):
         webbrowser.open(f'https://ourworldindata.org/grapher/{self.chart_id}')
+    
+def get_datasets():
+    response = requests.get('https://ourworldindata.org/charts')
+    soup = BeautifulSoup(response.text, 'html.parser')
+    links = soup.find_all(['section', 'a'])
+    
+    titles = []
+    urls = []
+    for link in links:
+        titles.append(link.text)
+        urls.append(link.get('href'))
+        
+    dic = {'title': titles,
+           'chart_id': urls}
+    
+    datasets = pd.DataFrame(dic)
+    datasets = datasets[datasets.chart_id.str.contains('grapher') > 0].drop_duplicates()
+    datasets.chart_id = datasets.chart_id.str.split(pat = '/').str[2]
+    return datasets
+    
+def owid_search(term):
+    datasets = get_datasets()
+    
+    return datasets[datasets.title.str.contains(term, case = False, regex = False) > 0]
+    
+    
+    
     
