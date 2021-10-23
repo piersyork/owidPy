@@ -10,6 +10,7 @@ os.chdir('/Users/piers/Documents/OWID/owidPy/owidPy')
 
 from __init__ import Owid
 import seaborn as sns
+from owidPy import Owid
 
 owid = Owid("legally-recognized-rights-to-land")
 
