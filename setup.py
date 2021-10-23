@@ -8,7 +8,7 @@ Created on Sat Oct 23 14:46:23 2021
 
 from setuptools import setup, find_packages
 
-VERSION = '0.0.2' 
+VERSION = '0.0.3' 
 DESCRIPTION = 'Python Package for importing data from Our World in Data'
 LONG_DESCRIPTION = 'My first Python package with a slightly longer description'
 
