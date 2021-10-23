@@ -5,7 +5,7 @@ Created on Sat Oct 23 14:43:26 2021
 
 @author: piers
 """
-from search import owid_search
+from owid_search import owid_search
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd

@@ -7,6 +7,7 @@ Created on Sat Oct 23 12:48:17 2021
 """
 import os
 os.chdir('/Users/piers/Documents/OWID/owidPy/owidPy')
+os.getcwd()
 
 from __init__ import Owid
 import seaborn as sns
