@@ -19,6 +19,7 @@ class Owid:
         self.chart_id = chart_id
         self.url = self.get_data_url()
         self.data = self.get_data()
+        self.data_info = ""
         
     def get_data(self):
         data_url = self.url

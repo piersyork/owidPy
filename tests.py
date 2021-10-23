@@ -6,9 +6,9 @@ Created on Sat Oct 23 12:48:17 2021
 @author: piers
 """
 import os
-os.chdir('/Users/piers/Documents/OWID/owidPy')
+os.chdir('/Users/piers/Documents/OWID/owidPy/owidPy')
 
-from owidPy import owid, owid_search
+from __init__ import Owid
 import seaborn as sns
 
 owid = Owid("legally-recognized-rights-to-land")
