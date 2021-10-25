@@ -11,6 +11,8 @@ import pandas as pd
 from functools import reduce
 #from plotnine import ggplot, geom_line, aes, theme_538
 import webbrowser
+from plotnine import ggplot, aes, geom_line, theme, theme_538, labs, element_line, element_rect
+from random import sample
 
 
 class Owid:
@@ -77,6 +79,23 @@ class Owid:
     
     def view_chart(self):
         webbrowser.open(f'https://ourworldindata.org/grapher/{self.chart_id}')
+        
+    def plot(self):
+        data = self.data 
+        title = data.columns.values[3]
+        data.columns.values[3] = 'value'
+        entities = data.entity.unique()
+        n_years = len(data.year.unique())
+        if n_years > 1:
+            print('Starting Plot')
+            (ggplot(data[data.entity.isin(sample(list(entities), 5))],
+                    aes(x = 'year', y = 'value', colour = 'entity'))
+             + geom_line()
+             + theme_538() 
+             + labs(title = title, x = '', y = '', colour = '')
+             + theme(axis_line_x = (element_line(size = 0.5)), axis_ticks_major_x = (element_line()),
+                     legend_position = "bottom", legend_box_background = element_rect(fill = 'black'),
+                     aspect_ratio=(0.45))).draw()
     
 def get_datasets():
     response = requests.get('https://ourworldindata.org/charts')
